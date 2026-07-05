@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: taskflow-ai-api
+    env: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGO_URI
+        sync: true
+        placeholder: "Your MongoDB Connection String (e.g. mongodb+srv://...)"
+      - key: GROQ_API_KEY
+        sync: true
+        placeholder: "Your Groq API Key"
+      - key: CLIENT_URL
+        sync: true
+        placeholder: "Your Vercel deployment URL (e.g. https://taskflow-ai.vercel.app)"
